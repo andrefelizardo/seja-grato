@@ -2,5 +2,7 @@
   "name": "seja-grato",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
