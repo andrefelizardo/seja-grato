@@ -1,0 +1,30 @@
+@import 'colors.scss';
+@import 'functions.scss';
+
+.link-support {
+  text-decoration: none;
+}
+.subtitle-default {
+  width: 65%;
+}
+.header-transparent {
+  &::after {
+    display: none;
+  }
+  & .toolbar-background {
+    background: transparent;
+    background-color: transparent;
+    border: none;
+  }
+  & .back-button-icon {
+    margin-top: 40px;
+    color: $coral;
+  }
+}
+.item-input {
+  padding-left: 0!important;
+}
+.full-button {
+  width: 100%;
+  text-transform: capitalize!important;
+}

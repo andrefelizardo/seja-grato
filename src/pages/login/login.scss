@@ -1,0 +1,30 @@
+page-login {
+  .title {
+    margin-top: 25px!important;
+    margin-bottom: 25px;
+  }
+  .subtitle-default {
+    margin-bottom: 25px;
+  }
+  ion-list {
+    margin-bottom: 0!important;
+  }
+  .item-input {
+    margin-bottom: 20px;
+  }
+  .link-support {
+    text-align: right;
+    display: inherit;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  .support-row {
+    justify-content: center;
+    // margin-top: 15px;
+    & .link-support {
+      text-align: center;
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+}

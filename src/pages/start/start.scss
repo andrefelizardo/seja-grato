@@ -1,0 +1,30 @@
+page-start {
+  .container-top {
+    width: 90%;
+    height: 300px;
+    background: url('../assets/imgs/start-page.png') center center no-repeat;
+    background-size: cover;
+    float: right;
+  }
+  .title {
+    display: inline-block;
+    margin-top: -40px;
+    clear: both;
+  }
+  .row-buttons {
+    margin-top: 60px;
+    flex-wrap: unset;
+  }
+  .button-large {
+    width: 100%;
+    min-height: 45px;
+  }
+  .support-row {
+    justify-content: center;
+    margin-top: 15px;
+  }
+  .link-support {
+    text-align: center;
+    font-size: 12px;
+  }
+}
