@@ -24,6 +24,20 @@
 .item-input {
   padding-left: 0!important;
 }
+.item-input.invalid.ng-dirty .item-inner {
+  border-bottom-color: $danger!important;
+  box-shadow: inset 0 -1px 0 0 $danger!important;
+}
+.item-input.invalid.ng-dirty {
+  border-bottom-color: $danger!important;
+  box-shadow: inset 0 -1px 0 0 $danger!important;
+}
+.error-message {
+  font-size: 9px;
+  color: $danger;
+  margin-top: 5px;
+  display: inherit;
+}
 .full-button {
   width: 100%;
   text-transform: capitalize!important;

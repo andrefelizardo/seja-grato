@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterPage } from './../pages/register/register';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -17,9 +18,23 @@ export class MyApp {
 
   rootPage: any = StartPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private afAuth: AngularFireAuth
+  ) {
+    const teste = this.afAuth.auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log('logado');
+        this.rootPage = HomePage;
+      } else {
+        console.log('não logado');
+      }
+    });
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation

@@ -18,19 +18,23 @@
     Entre para o clube dos que praticam gratidão diariamente!
   </h2>
 
-  <ion-list padding>
-      <ion-item class="item-input">
-        <ion-input type="email" placeholder="E-mail"></ion-input>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+    <ion-list padding>
+      <ion-item class="item-input" [ngClass]="{'invalid': registerForm.get('email').errors && registerForm.get('email').errors.emailAlreadyUsed}">
+        <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
       </ion-item>
-      <ion-item class="item-input">
-        <ion-input type="password" placeholder="Senha"></ion-input>
+      <span class="error-message" *ngIf="registerForm.get('email').errors && registerForm.get('email').errors.emailAlreadyUsed">E-mail já utilizado. Deseja recuperar sua senha?</span>
+      <ion-item class="item-input" [ngClass]="{'invalid': registerForm.get('password').errors && registerForm.get('password').errors.weakPassword}">
+        <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
       </ion-item>
-      <ion-item class="item-input">
-          <ion-input type="password" placeholder="Repetir senha"></ion-input>
-        </ion-item>
+      <span class="error-message" *ngIf="registerForm.get('password').errors && registerForm.get('password').errors.weakPassword">Senha fraca. Utilize números, símbolos e letras</span>
+      <ion-item class="item-input" [ngClass]="{'invalid': registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').errors.validConfirmPassword, 'invalid': registerForm.get('password').errors && registerForm.get('password').errors.weakPassword}" >
+          <ion-input type="password" placeholder="Repetir senha" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+      <span class="error-message" *ngIf="registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').errors.validConfirmPassword" >Confirmação de senha deve ser igual a senha</span>
     </ion-list>
-
     <div padding>
-      <button ion-button large color="coral" class="full-button">Cadastrar</button>
+      <button [disabled]="!registerForm.valid" ion-button type="submit" large color="coral" class="full-button">Cadastrar</button>
     </div>
+  </form>
 </ion-content>

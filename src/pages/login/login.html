@@ -19,19 +19,21 @@
     Que bom que voltou :)
   </h2>
 
-  <ion-list padding>
-    <ion-item class="item-input">
-      <ion-input type="email" placeholder="E-mail"></ion-input>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input type="password" placeholder="Senha"></ion-input>
-    </ion-item>
-    <a href="#" ion-text color="coral" class="link-support">Esqueceu sua senha?</a>
-  </ion-list>
-
-  <div padding>
-    <button ion-button large color="coral" class="full-button">Entrar</button>
-  </div>
+  <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()" >
+    <ion-list padding>
+      <ion-item class="item-input" >
+        <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item class="item-input" [ngClass]="{'invalid': loginForm.get('password').errors && loginForm.get('password').invalid}">
+        <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+      </ion-item>
+      <span class="error-message" *ngIf="loginForm.get('password').errors && loginForm.get('password').errors.wrongPassword"  >Senha incorreta</span>
+      <a href="" ion-text color="coral" class="link-support">Esqueceu sua senha?</a>
+    </ion-list>
+    <div padding>
+      <button [disabled]="!loginForm.valid" ion-button type="submit" large color="coral" class="full-button">Entrar</button>
+    </div>
+  </form>
 
   <div ion-row class="support-row">
     <a ion-text color="grey" class="link-support">Não tem conta?<strong>Cadastre-se.</strong></a>
