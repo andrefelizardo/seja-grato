@@ -15,11 +15,13 @@ export class AlertProvider {
   constructor(private alertCtrl: AlertController) {
   }
 
-  showAlert(title: string, subtitle?: string) {
+  showAlert(title: string, subtitle?: string, type?: string, buttons?: any) {
     this.alert = this.alertCtrl.create({
       title: title,
-      subTitle: subtitle
+      subTitle: subtitle,
+      buttons: !type ? ['OK'] : buttons
     });
+    this.alert.present();
   }
 
 }

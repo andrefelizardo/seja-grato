@@ -1,19 +1,25 @@
-<ion-header>
+<div class="background-full"></div>
+<ion-header class="header-transparent">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <h2 class="subtitle-default" color="black" ion-text padding>
+    Aqui estão os motivos pelos quais você já foi grato hoje.
+  </h2>
+  <ul class="card-list">
+    <li *ngFor="let item of collection" class="card-item">
+      {{item}}
+    </li>
+  </ul>
   <button ion-button secondary (click)="logoff()">Logoff</button>
+  <div class="container-bottom">
+    <button ion-button icon-only class="button-add" color="coral">
+        <ion-icon name="add"></ion-icon>
+    </button>
+  </div>
 </ion-content>

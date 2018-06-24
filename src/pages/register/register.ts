@@ -1,7 +1,7 @@
 import { HomePage } from './../home/home';
 import { AlertProvider } from './../../providers/alert/alert';
 import { LoaderProvider } from './../../providers/loader/loader';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, EventEmitter } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ValidateConfirmPassword } from '../../validators/confirmPassword';

@@ -15,19 +15,20 @@
 <ion-content padding>
   <h1 class="title" color="coral" ion-text padding>Seja Grato</h1>
   <h2 class="subtitle-default" color="black" ion-text padding>
-    Olá!<br/>
-    Que bom que voltou :)
+    Olá!
+    <br/> Que bom que voltou :)
   </h2>
 
-  <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()">
     <ion-list padding>
-      <ion-item class="item-input" >
+      <ion-item class="item-input" [ngClass]="{'invalid': loginForm.get('email').errors && loginForm.get('email').invalid}">
         <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
       </ion-item>
+      <span class="error-message" *ngIf="loginForm.get('email').errors && loginForm.get('email').errors.userNotFound">Usuário não encontrado</span>
       <ion-item class="item-input" [ngClass]="{'invalid': loginForm.get('password').errors && loginForm.get('password').invalid}">
         <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
       </ion-item>
-      <span class="error-message" *ngIf="loginForm.get('password').errors && loginForm.get('password').errors.wrongPassword"  >Senha incorreta</span>
+      <span class="error-message" *ngIf="loginForm.get('password').errors && loginForm.get('password').errors.wrongPassword">Senha incorreta</span>
       <a href="" ion-text color="coral" class="link-support">Esqueceu sua senha?</a>
     </ion-list>
     <div padding>
@@ -36,6 +37,8 @@
   </form>
 
   <div ion-row class="support-row">
-    <a ion-text color="grey" class="link-support">Não tem conta?<strong>Cadastre-se.</strong></a>
+    <a ion-text color="grey" class="link-support" (click)="goToHome()">Não tem conta?
+      <strong> Cadastre-se.</strong>
+    </a>
   </div>
 </ion-content>

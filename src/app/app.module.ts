@@ -3,6 +3,7 @@ import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Network } from '@ionic-native/network';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { LoaderProvider } from '../providers/loader/loader';
 import { AlertProvider } from '../providers/alert/alert';
+import { StatusProvider } from '../providers/status/status';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { AlertProvider } from '../providers/alert/alert';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
     LoaderProvider,
-    AlertProvider
+    AlertProvider,
+    StatusProvider,
+    Network
   ]
 })
 export class AppModule {}
