@@ -1,6 +1,10 @@
 page-home {
+  .content {
+    z-index: 2;
+    background-color: rgba(255, 255, 255, .75);
+  }
   .background-full {
-    background-color: #fff;
+    background: url('../assets/imgs/adult-affection-beach.jpg') no-repeat center center;
     position: absolute;
     top: 0;
     left: 0;
@@ -8,6 +12,14 @@ page-home {
     width: 100%;
     display: flex;
     z-index: 1;
+    background-size: cover;
+  }
+  .menu-icon {
+    display: flex;
+    width: 35px;
+    height: 30px;
+    background: url('../assets/icon/menu-icon.png') no-repeat center center;
+    background-size: cover;
   }
   .card-list {
     list-style: none;
@@ -21,23 +33,32 @@ page-home {
       margin-bottom: 15px;
       border: 1px solid $grey-second;
       color: $grey-second;
+      &__text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
     }
   }
   .container-bottom {
     position: fixed;
     left: 0;
     bottom: 0;
-    z-index: 1;
+    // z-index: 1;
     display: flex;
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
     padding: 15px 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     .button-add {
       border-radius: 50%;
       height: 55px;
       width: 55px;
+      z-index: 1;
     }
+  }
+  .scroll-content {
+    padding-bottom: 100px;
   }
 }

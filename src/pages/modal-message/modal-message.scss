@@ -1,0 +1,17 @@
+page-modal-message {
+  .close-button {
+    font-size: 25px;
+  }
+  .custom-text-area {
+    .item-inner {
+      font-size: 25px;
+      border: none!important;
+    }
+    &.input-has-focus {
+      .item-inner {
+        border: none!important;
+        box-shadow: none!important;
+      }
+    }
+  }
+}

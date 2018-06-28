@@ -2,7 +2,7 @@
 <ion-header class="header-transparent">
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <span class="menu-icon"></span>
     </button>
   </ion-navbar>
 </ion-header>
@@ -13,12 +13,12 @@
   </h2>
   <ul class="card-list">
     <li *ngFor="let item of collection" class="card-item">
-      {{item}}
+      <span class="card-item__text">{{item}}</span>
     </li>
   </ul>
   <button ion-button secondary (click)="logoff()">Logoff</button>
   <div class="container-bottom">
-    <button ion-button icon-only class="button-add" color="coral">
+    <button ion-button icon-only class="button-add" color="coral" (click)="newMessage()">
         <ion-icon name="add"></ion-icon>
     </button>
   </div>

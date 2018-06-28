@@ -16,25 +16,28 @@ import { AngularFireModule } from 'angularfire2';
 import { LoaderProvider } from '../providers/loader/loader';
 import { AlertProvider } from '../providers/alert/alert';
 import { StatusProvider } from '../providers/status/status';
+import { ModalMessagePage } from '../pages/modal-message/modal-message';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    StartPage
+    StartPage,
+    ModalMessagePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    StartPage
+    StartPage,
+    ModalMessagePage
   ],
   providers: [
     StatusBar,
