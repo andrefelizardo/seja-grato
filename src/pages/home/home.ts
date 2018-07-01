@@ -13,12 +13,14 @@ export class HomePage {
 
   modalMessage;
 
-  collection = ['Pelo gol do Neymar depois de 3 meses sem jogar',
-    'Pelo passeio com a família. Vamos aumentar esse texto apenas com o intuito de textar os 3 pontinhos',
-    'Por comer caldo de ervilha',
-    'Pela vitória do meu Vascão',
-    'Por ter um filho muito inteligente',
-    'Por estarmos na Copa do Mundo!'];
+  collection = [
+    { data: '01/01/2018', texto: 'Pelo gol do Neymar depois de 3 meses sem jogar' },
+    { data: '02/01/2018', texto: 'Pelo passeio com a família. Vamos aumentar esse texto apenas com o intuito de textar os 3 pontinhos' },
+    { data: '03/01/2018', texto: 'Por comer caldo de ervilha' },
+    { data: '04/01/2018', texto: 'Pela vitória do meu Vascão' },
+    { data: '05/01/2018', texto: 'Por ter um filho muito inteligente' },
+    { data: '06/01/2018', texto: 'Por estarmos na Copa do Mundo!' }
+  ];
 
   constructor(
     public navCtrl: NavController,
