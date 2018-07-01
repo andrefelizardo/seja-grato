@@ -29,4 +29,8 @@ export class ModalMessagePage {
     this.viewCtrl.dismiss();
   }
 
+  saveMessage() {
+    console.log('save message');
+  }
+
 }

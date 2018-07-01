@@ -14,4 +14,19 @@ page-modal-message {
       }
     }
   }
+  .bottom-bar {
+    display: flex;
+    background-color: $grey-light;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    flex-direction: row-reverse;
+    & .button {
+      margin: 0;
+      text-transform: capitalize;
+      width: 11.5rem;
+      height: 4.5rem;
+    }
+  }
 }
