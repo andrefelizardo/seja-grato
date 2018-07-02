@@ -7,7 +7,7 @@ page-modal-message {
       font-size: 25px;
       border: none!important;
     }
-    &.input-has-focus {
+    &.input-has-focus, &.item-input.ng-valid {
       .item-inner {
         border: none!important;
         box-shadow: none!important;

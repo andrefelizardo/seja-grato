@@ -1,3 +1,4 @@
+import { MessageProvider } from './../../providers/message/message';
 import { ModalMessagePage } from './../modal-message/modal-message';
 import { AlertProvider } from './../../providers/alert/alert';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -12,32 +13,28 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 export class HomePage {
 
   modalMessage;
-
-  collection = [
-    { data: '01/01/2018', texto: 'Pelo gol do Neymar depois de 3 meses sem jogar' },
-    { data: '02/01/2018', texto: 'Pelo passeio com a família. Vamos aumentar esse texto apenas com o intuito de textar os 3 pontinhos' },
-    { data: '03/01/2018', texto: 'Por comer caldo de ervilha' },
-    { data: '04/01/2018', texto: 'Pela vitória do meu Vascão' },
-    { data: '05/01/2018', texto: 'Por ter um filho muito inteligente' },
-    { data: '06/01/2018', texto: 'Por estarmos na Copa do Mundo!' }
-  ];
+  messages;
 
   constructor(
     public navCtrl: NavController,
     private afAuth: AngularFireAuth,
     private alert: AlertProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public messageService: MessageProvider
   ) {
 
+  }
+
+  ionViewDidLoad() {
+    this.messages = this.messageService.getMessages();
   }
 
   logoff() {
     this.afAuth.auth.signOut();
   }
 
-  newMessage() {
-    console.log('openModal');
-    this.modalMessage = this.modalCtrl.create(ModalMessagePage);
+  newMessage(index?: number) {
+    this.modalMessage = this.modalCtrl.create(ModalMessagePage, {posArrayMessage: index});
     this.modalMessage.present();
   }
 

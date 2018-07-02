@@ -17,6 +17,9 @@ import { LoaderProvider } from '../providers/loader/loader';
 import { AlertProvider } from '../providers/alert/alert';
 import { StatusProvider } from '../providers/status/status';
 import { ModalMessagePage } from '../pages/modal-message/modal-message';
+import { MessageProvider } from '../providers/message/message';
+import { HttpClientModule } from '@angular/common/http';
+import { DatesProvider } from '../providers/dates/dates';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { ModalMessagePage } from '../pages/modal-message/modal-message';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +51,9 @@ import { ModalMessagePage } from '../pages/modal-message/modal-message';
     LoaderProvider,
     AlertProvider,
     StatusProvider,
-    Network
+    Network,
+    MessageProvider,
+    DatesProvider,
   ]
 })
 export class AppModule {}

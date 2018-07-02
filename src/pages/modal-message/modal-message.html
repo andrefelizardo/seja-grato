@@ -13,9 +13,13 @@
 
 <ion-content padding>
   <ion-item class="custom-text-area">
-    <ion-textarea autosize placeholder="Hoje eu estou grato por..." autocomplete="off" rows="10"></ion-textarea>
+    <ion-textarea [(ngModel)]="message.texto" name="message" autosize placeholder="Hoje eu estou grato por..." autocomplete="off" rows="10"></ion-textarea>
   </ion-item>
   <div class="bottom-bar">
-    <button ion-button color="coral" (click)="saveMessage()">Salvar</button>
+    <button [disabled]="!message.texto || message.texto.length < 10" ion-button color="coral"
+    (click)="saveMessage()">
+    <span *ngIf="!editMode" >Salvar</span>
+    <span *ngIf="editMode" >Editar</span>
+  </button>
   </div>
 </ion-content>

@@ -12,8 +12,8 @@
     Aqui estão os motivos pelos quais você já foi grato hoje.
   </h2>
   <ul class="card-list">
-    <li *ngFor="let item of collection" class="card-item">
-      <span class="card-item__text">{{item.texto}}</span>
+    <li *ngFor="let message of messages; let i = index" class="card-item" (click)="newMessage(i)">
+      <span class="card-item__text">{{message.texto}}</span>
     </li>
   </ul>
   <button ion-button secondary (click)="logoff()">Logoff</button>
