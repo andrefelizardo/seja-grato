@@ -1,5 +1,8 @@
+import { StatusProvider } from './../status/status';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from '@firebase/util';
 
 /*
   Generated class for the MessageProvider provider.
@@ -10,21 +13,24 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MessageProvider {
 
-  messages = [
-    { data: '01/01/2018', texto: 'Pelo gol do Neymar depois de 3 meses sem jogar' },
-    { data: '02/01/2018', texto: 'Pelo passeio com a família. Vamos aumentar esse texto apenas com o intuito de textar os 3 pontinhos' },
-    { data: '03/01/2018', texto: 'Por comer caldo de ervilha' },
-    { data: '04/01/2018', texto: 'Pela vitória do meu Vascão' },
-    { data: '05/01/2018', texto: 'Por ter um filho muito inteligente' },
-    { data: '06/01/2018', texto: 'Por estarmos na Copa do Mundo!' }
-  ];
+  messages;
+  item: Observable<any>;
+  uid: string;
 
-  constructor(public http: HttpClient) {
-
+  constructor(
+    public http: HttpClient,
+    public db: AngularFireDatabase,
+    public status: StatusProvider
+  ) {
+    this.uid = this.status.user.uid;
   }
 
   getMessages() {
-    return this.messages;
+    return this.http.get(`https://seja-grato.firebaseio.com/mensagens/${this.uid}/mensagens.json`)
+      .map((res: Response) => {
+        this.messages = res;
+        return res;
+      })
   }
 
   getMessageByPosition(pos: number) {
@@ -37,6 +43,10 @@ export class MessageProvider {
 
   addMessage(message: any) {
     this.messages.push(message);
+    // if(this.status.logged) {
+    //   const itemDb = this.db.database;
+    //   itemDb.ref('mensagens/').child(this.uid).child('mensagens').push(message);
+    // }
   }
 
 }

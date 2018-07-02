@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class StatusProvider {
   public logged: boolean;
   public network: boolean;
+  public user: any;
 
   constructor() {
   }

@@ -32,16 +32,21 @@ export class MyApp {
     private status: StatusProvider,
     private network: Network
   ) {
-    this.afAuth.auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log('logado');
-        this.rootPage = HomePage;
-        this.status.logged = true;
-      } else {
-        console.log('não logado');
-        this.status.logged = false;
-      }
-    });
+    if (this.status.logged) {
+      this.nav.setRoot(HomePage);
+    } else {
+      this.afAuth.auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.rootPage = HomePage;
+          this.status.logged = true;
+          this.status.user = user;
+          this.nav.setRoot(HomePage);
+        } else {
+          this.rootPage = StartPage;
+          this.status.logged = false;
+        }
+      });
+    }
     this.network.onchange().subscribe(
       status => status.type == 'online' ? this.status.network = true : this.status.network = false
     );

@@ -48,6 +48,7 @@ export class LoginPage implements OnInit {
   onSubmit() {
     this.loader.showLoader('Verificando sua conexão');
     if(this.status.network) {
+      this.loader.exitLoader();
       this.loader.showLoader('Fazendo login');
       this.afAuth.auth.signInWithEmailAndPassword(
         this.loginForm.value.email,

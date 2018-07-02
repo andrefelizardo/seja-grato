@@ -1,3 +1,4 @@
+import { StatusProvider } from './../../providers/status/status';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -16,7 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StartPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public status: StatusProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    if (this.status.logged) {
+      this.goToHome();
+    }
   }
 
   openPage(page: string) {

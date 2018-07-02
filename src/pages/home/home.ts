@@ -26,7 +26,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.messages = this.messageService.getMessages();
+    this.messageService.getMessages().subscribe((data) => {this.messages = data});
   }
 
   logoff() {

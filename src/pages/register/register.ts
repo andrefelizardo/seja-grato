@@ -43,7 +43,7 @@ export class RegisterPage {
     .then(() => {
       this.loader.exitLoader();
       this.alert.showAlert('Conta criada com sucesso', 'Agora todas as suas mensagens ficarão sincornizadas na nuvem!');
-      this.navCtrl.push(HomePage);
+      this.navCtrl.setRoot(HomePage);
     })
     .catch((error) => {
       this.loader.exitLoader();
