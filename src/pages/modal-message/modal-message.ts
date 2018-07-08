@@ -1,7 +1,7 @@
 import { DatesProvider } from './../../providers/dates/dates';
 import { MessageProvider } from './../../providers/message/message';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the ModalMessagePage page.
@@ -26,7 +26,8 @@ export class ModalMessagePage {
     public navParams: NavParams,
     public viewCtrl: ViewController,
     private messageService: MessageProvider,
-    private dates: DatesProvider
+    private dates: DatesProvider,
+    private alertCtrl: AlertController
   ) {
     this.editMessagePos = navParams.get('posArrayMessage');
     this.message = {};
@@ -53,6 +54,29 @@ export class ModalMessagePage {
       this.messageService.addMessage(this.message);
       this.closeModal();
     }
+  }
+
+  removeMessage() {
+    const deleteAlert = this.alertCtrl.create({
+      title: 'Excluir mensagem',
+      message: 'Tem certeza que deseja excluir essa mensagem?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            console.log('faz nada');
+          }
+        },
+        {
+          text: 'Tenho certeza',
+          handler: () => {
+            this.messageService.removeMessage(this.editMessagePos);
+            this.closeModal();
+          }
+        }
+      ]
+    });
+    deleteAlert.present();
   }
 
 }

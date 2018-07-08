@@ -8,18 +8,26 @@
 </ion-header>
 
 <ion-content padding>
-  <h2 class="subtitle-default" color="black" ion-text padding>
-    Aqui estão os motivos pelos quais você já foi grato hoje.
-  </h2>
-  <ul class="card-list">
-    <li *ngFor="let message of messages; let i = index" class="card-item" (click)="newMessage(i)">
-      <span class="card-item__text">{{message.texto}}</span>
-    </li>
-  </ul>
-  <button ion-button secondary (click)="logoff()">Logoff</button>
+  <section *ngIf="messages && messages.length > 0 ; else noMessages">
+    <h2 class="subtitle-default" color="black" ion-text padding>
+      Aqui estão os motivos pelos quais você já foi grato hoje.
+    </h2>
+    <ul class="card-list">
+      <li *ngFor="let message of messages; let i = index" class="card-item" (click)="newMessage(i)">
+        <span class="card-item__text">{{message.texto}}</span>
+      </li>
+    </ul>
+    <button ion-button secondary (click)="logoff()">Logoff</button>
+  </section>
+  <ng-template #noMessages>
+    <section class="status-empty">
+        <h3 text-center>Cada vez que você dá uma desculpa, há alguém que tem o mesmo problema, mas passa por cima.</h3>
+        <h2 text-center>Sonhe Grande</h2>
+    </section>
+  </ng-template>
   <div class="container-bottom">
     <button ion-button icon-only class="button-add" color="coral" (click)="newMessage()">
-        <ion-icon name="add"></ion-icon>
+      <ion-icon name="add"></ion-icon>
     </button>
   </div>
 </ion-content>

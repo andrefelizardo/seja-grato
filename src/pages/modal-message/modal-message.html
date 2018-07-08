@@ -21,5 +21,6 @@
     <span *ngIf="!editMode" >Salvar</span>
     <span *ngIf="editMode" >Editar</span>
   </button>
+  <button *ngIf="editMode"  ion-button color="grey" (click)="removeMessage()">Excluir</button>
   </div>
 </ion-content>
